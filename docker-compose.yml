@@ -1,9 +1,25 @@
 version: '3'
 services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: srak_app
   app:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    container_name: django
+    command: ./wait-for-it.sh db:3306 -- python3 manage.py runserver 0.0.0.0:8000
+    environment:
+      DATABASE_NAME: srak_app
+      DATABASE_USER: root
+      DATABASE_PASSWORD: example
     ports:
       - "8000:8000"
     volumes:
       - .:/app
+    links:
+      - db:db
+    depends_on:
+      - db
