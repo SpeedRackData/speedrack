@@ -1,0 +1,10 @@
+django
+django-secure
+django-model-utils
+django-debug-toolbar
+gunicorn
+mysqlclient
+South
+##django-redis-cache
+##django-waffle
+requests
