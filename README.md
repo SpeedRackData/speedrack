@@ -7,4 +7,6 @@
 
 ```mysql -h 127.0.0.1 -uroot -p < alch_sprack.sql```
 
-```docker exec -ti <app container id> bash``` && ```python manage.py migrate```
+```docker exec -ti <app container id> bash```
+  ```python manage.py migrate```
+  ```python manage.py createsuperuser```
